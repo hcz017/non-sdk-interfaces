@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NonSDKAPI</string>
+
+    <string name="operator_name_data_sub">Operator Name(data sub)</string>
+    <string name="operator_name">operator name</string>
+    <string name="get_ims_reg_sta">IMS register stats</string>
+    <string name="reset">Reset</string>
+</resources>

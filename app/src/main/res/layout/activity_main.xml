@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/get_operator_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getNetworkOperatorName"
+            android:text="@string/operator_name_data_sub"
+            android:textAllCaps="false"/>
+
+        <TextView
+            android:id="@+id/operator_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/operator_name"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/get_ims_reg_sta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="isImsRegistered"
+            android:text="@string/get_ims_reg_sta"
+            android:textAllCaps="false"/>
+
+        <TextView
+            android:id="@+id/ims_reg_sta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</LinearLayout>
