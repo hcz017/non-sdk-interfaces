@@ -1,6 +1,7 @@
 package com.hcz017.nonsdkapi;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import me.weishu.reflection.Reflection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 callState.setText("");
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        Reflection.unseal(base);
     }
 
     /**
