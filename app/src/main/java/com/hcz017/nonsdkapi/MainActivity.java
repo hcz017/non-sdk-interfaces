@@ -93,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
         Object imsREgStat = isImsRegistered.invoke(tm, defaultDataSubId);
         imsStat.setText((boolean) imsREgStat ? "true" : "false");
         Log.i(TAG, "isImsRegistered : " + imsREgStat);
+//        Log.i(TAG, "tm.isImsRegistered : " + tm.isImsRegistered((int) defaultDataSubId));
+        hasCarrierPrivileges((int) defaultDataSubId);
+
+    }
+
+    // appcompat_hiddenapi-dark-greylist
+    private void hasCarrierPrivileges(int defaultDataSubId) {
+        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        Log.i(TAG, "hasCarrierPrivileges : " + tm.hasCarrierPrivileges(defaultDataSubId));
     }
 
     public void isPhoneIdle(View view) throws ClassNotFoundException, NoSuchMethodException,
