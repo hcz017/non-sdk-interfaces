@@ -6,4 +6,5 @@
     <string name="get_ims_reg_sta">IMS register stats</string>
     <string name="reset">Reset</string>
     <string name="get_call_sta">get call state</string>
+    <string name="is_package_accessible">is package accessible</string>
 </resources>

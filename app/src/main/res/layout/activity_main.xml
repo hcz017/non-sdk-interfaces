@@ -63,15 +63,15 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/get_call_sta"
+            android:id="@+id/is_pack_accessible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="isPhoneIdle"
-            android:text="@string/get_call_sta"
+            android:onClick="isPackageAccessible"
+            android:text="@string/is_package_accessible"
             android:textAllCaps="false"/>
 
         <TextView
-            android:id="@+id/call_sta"
+            android:id="@+id/pack_access"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

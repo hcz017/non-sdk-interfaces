@@ -1,5 +1,6 @@
 package com.hcz017.nonsdkapi;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvOpName = findViewById(R.id.operator_name);
         imsStat = findViewById(R.id.ims_reg_sta);
-        callState = findViewById(R.id.call_sta);
+        callState = findViewById(R.id.pack_access);
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +94,26 @@ public class MainActivity extends AppCompatActivity {
         Method isPhoneIdle = inProgressCallSession.getMethod("getBackgroundCallState");
         Object imsREgStat = isPhoneIdle.invoke(inProgressCallSession);
         callState.setText((String) imsREgStat);
+        Log.i(TAG, "call state : " + imsREgStat);
+    }
+
+    /**
+     *  Access isPackageAccessible one of appcompat_hiddenapi-blacklist,
+     *  but not print any warning log
+     * @param view
+     * @throws ClassNotFoundException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    public void isPackageAccessible(View view) throws ClassNotFoundException, NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException {
+
+        Class inProgressCallSession;
+        inProgressCallSession = Class.forName("sun.reflect.misc.ReflectUtil");
+        Method isPhoneIdle = inProgressCallSession.getMethod("isPackageAccessible", Class.class);
+        Object imsREgStat = isPhoneIdle.invoke(inProgressCallSession, Activity.class);
+        callState.setText((boolean) imsREgStat ? "true" : "false");
         Log.i(TAG, "call state : " + imsREgStat);
     }
 
