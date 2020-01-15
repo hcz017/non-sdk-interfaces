@@ -1,5 +1,7 @@
 # Android P 如何访问非SDK 接口
 
+**Android 10 版本上这一内容有所更新，请参考[行为变更：所有应用 - 限制非 SDK 接口]( https://developer.android.com/about/versions/10/behavior-changes-all#non-sdk-restrictions )**
+
 **为什么要访问非SDK 接口？**
 
 为了让应用能获得更多的系统属性、资源，扩展功能等。
@@ -55,7 +57,7 @@
 - 浅灰名单：仍可以访问的非 SDK 函数/字段，但不保证后续不会移到黑名单。
 - 深灰名单：
   对于目标 SDK 低于 API 级别 28 的应用，允许使用深灰名单接口。
-  对于目标 SDK 为 API 28 或更高级别的应用：行为与黑名单相同
+  对于目标 SDK 为 API 28 或更高级别的应用：行为与黑名单相同。
 - 黑名单：受限，无论目标 SDK 如何。 平台将表现为似乎接口并不存在。 例如，无论应用何时尝试使用接口，平台都会引发 NoSuchMethodError/NoSuchFieldException，即使应用想要了解某个特殊类别的字段/函数名单，平台也不会包含接口。
 
 
@@ -64,7 +66,7 @@
 由于灰名单的不确定性，开发者需尽早使用其他API 代替，如果实在不能用其他API 替代，向Google 提交使用场景和说明， Google会收集使用较多的非SDK 接口，考虑做以下支持：
 
 1. 扩展白名单
-2. 新增API 功能类似的API
+2. 新增功能类似的API
 
 ### 如何启用对非 SDK API 的访问（官方）？
 
@@ -84,7 +86,7 @@ adb shell settings delete global hidden_api_policy_pre_p_apps
 adb shell settings delete global hidden_api_policy_p_apps
 ```
 
- 这些命令**不要求已取得 root 权限**的设备。
+使用这些命令**不要求设备已取得 root 权限**。
 
 给定整数的含义如下所示：
 
@@ -144,9 +146,9 @@ SDK 中提供的framework.jar 包含的都是公开的接口，源码编译生�
 
 ### 小结
 
-1. 选择较低的target SDK -> 适用于对target SDK 没有要求的app。推荐
-2. 设置属性 –> 不需要改应用代码，但需要adb 环境活着获得root权限后应用去设置属性。不推荐。
-3. 第三方工具 –> 简单，不用做额外配置。缺点是如果后续google 更改了限制访问非SDK 接口的实现，第三方工具可能会更新不及时（或不更新），有风险。不是特别推荐。
+1. 选择较低的target SDK -> 适用于对target SDK 没有要求的app。推荐；
+2. 设置属性 –> 不需要改应用代码，但需要adb 环境或者获得root 权限后应用去设置属性。不推荐；
+3. 第三方工具 –> 简单，不用做额外配置。缺点是如果后续google 更改了限制访问非SDK 接口的实现，第三方工具可能会更新不及时（或不更新），有风险。不是特别推荐；
 4. 添加系统classes.jar/frameworks.jar ->不用写反射代码，但需要有源码编译生成的classes.jar，考虑到国内有诸多定制系统，可能会存在兼容性问题。不推荐。
 
 ## 补充
